@@ -24,4 +24,37 @@ class UsuarioController extends Controller
             "data"=>$usuario
         ], 200);
     }
+    public function pesquisarPorId($id){
+        $usuario = Usuario::find($id);
+        if($usuario == null){
+            return response()->json([
+                'status' => false,
+                'message' => "Usuário não encontrado"
+            ]);
+        }
+        return response()->Json([
+            'status' => true,
+            'data' => $usuario
+        ]);
+    }
+    public function pesquisarPorCpf($cpf){
+        $usuario = Usuario::where('cpf', '=', $cpf)->first();
+        if($usuario == null){
+            return response()->json([
+                'status' => false,
+                'message' => "Cpf não encontrado"
+            ]);
+        }
+        return response()->Json([
+            'status' => true,
+            'data' => $usuario
+        ]);
+    }
+    public function retornarTodos(){
+        $usuarios = Usuario::All();
+        return response()->json([
+            'status' => true,
+            'data' => $usuarios
+        ]);
+    }
 }
