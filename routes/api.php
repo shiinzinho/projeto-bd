@@ -13,3 +13,7 @@ Route::get('find/cpf/{cpf}', [UsuarioController::class, 'pesquisarPorCpf']);
 Route::get('/all', [UsuarioController::class, 'retornarTodos']);
 
 Route::post('/name', [UsuarioController::class, 'pesquisarPorNome']);
+
+Route::delete('delete/{id}', [UsuarioController::class, 'excluir']);
+
+Route::put('update', [UsuarioController::class, 'update']);
