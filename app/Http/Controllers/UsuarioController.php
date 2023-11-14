@@ -116,14 +116,14 @@ class UsuarioController extends Controller
             $nomeArquivo = 'usuarios.csv';
             $filePath = storage_path('app/public/'.$nomeArquivo);
             $handle = fopen($filePath, "w");
-            fputcsv($handle, array('name','cellphone','cpf', 'email'));
+            fputcsv($handle, array('name', 'cellphone', 'cpf', 'email'), ';');
             foreach($usuarios as $u){
                 fputcsv($handle, array(
                     $u-> name,
                     $u->cellphone,
                     $u->cpf,
                     $u -> email
-                ));
+                ),';');
             }
 
             fclose($handle);
